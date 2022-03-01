@@ -1,0 +1,36 @@
+id: CalculoPotencia
+label: 'QT GUI Calculo Potencia '
+category: '[Modulos_J1B_E&S]'
+flags: need_qt_gui
+
+parameters:
+-   id: l_vect
+    label: Longitud FFT
+    dtype: int
+    default: '1024'
+    hide: none
+-   id: gui_hint
+    label: GUI Hint
+    dtype: gui_hint
+    hide: part
+
+inputs:
+-   label: in
+    dtype: float
+    vlen: 1
+
+outputs: []
+
+templates:
+    imports: 'from CalculoPotencia import CalculoPotencia  # grc-generated hier_block'
+    make: "CalculoPotencia(\n    l_vect=${ l_vect },\n)\n<% win = 'self.%s'%id %>\n\
+        ${ gui_hint() % win }"
+    callbacks:
+    - set_l_vect(${ l_vect })
+
+documentation: 'Edson Rey & Sebastian Pabon
+
+    /home/labcom/Documentos/Practica5/CalculoPotencia.py'
+grc_source: /home/labcom/Documentos/Practica5/CalculoPotenciagrc
+
+file_format: 1
